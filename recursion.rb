@@ -32,6 +32,27 @@ p range(10, 8) # => []
 
 # Write both a recursive and iterative version of sum of an array.
 
+    def iter_sum(array)
+        array.inject(:+)
+    end
+
+    def recur_sum(array)
+        array.count > 1 ? array.first + recur_sum(array.drop(1)) : array.first
+    end
+
+    # test
+puts "Sum iteration \n"
+p iter_sum([0, 1, 2, 3, 4, 5]) # => 15
+p iter_sum([5, 10, -4]) # => 11
+p iter_sum([1, 2, 3, 126, -7]) # => 125
+p iter_sum([18, 6, 42, 0]) # => 66
+
+puts "Sum recursion \n"
+p recur_sum([0, 1, 2, 3, 4, 5]) # => 15
+p recur_sum([5, 10, -4]) # => 11
+p recur_sum([1, 2, 3, 126, -7]) # => 125
+p recur_sum([18, 6, 42, 0]) # => 66
+
 # Exponentiation
 
 # Write two versions of exponent that use two different recursions:

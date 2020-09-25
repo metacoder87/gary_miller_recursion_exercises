@@ -19,6 +19,17 @@
 # return [1, 2, 3, 4]. If end < start, you can return an empty array.
 
 
+    def range(first, past_last)
+        first >= past_last ? [] : [first] + range(first + 1, past_last)
+    end
+
+    # test
+puts "Range \n"
+p range(1, 4) # => [1, 2, 3] 
+p range(3, 10) # => [3, 4, 5, 6, 7, 8, 9]
+p range(9, 14) # => [9, 10, 11, 12, 13]
+p range(10, 8) # => []
+
 # Write both a recursive and iterative version of sum of an array.
 
 # Exponentiation

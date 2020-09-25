@@ -123,6 +123,25 @@ p expo(3, 5) # => 243
 
 # How many examples do you need to walk through to be confident that it works?
 
+    def exponent(base, power)
+        power > 1 && power % 2 == 0 ? exponent(base, power / 2) * exponent(base,power / 2) : power > 1 && power % 2 != 0 ? base * (exponent(base, (power - 1) / 2) * exponent(base, (power -1) / 2)) : base == 2 && power == 0 ? 1 : base
+    end
+
+    # test
+puts "Exponent 2 \n"
+p exponent(2, 3) # => 8
+p exponent(3, 2) # => 9
+p exponent(3, 3) # => 27*
+p exponent(9, 1) # => 9
+p exponent(1, 0) # => 1
+p exponent(0, 1) # => 0
+p exponent(1, 1) # => 1
+p exponent(1, 2) # => 1
+p exponent(2, 0) # => 1*
+p exponent(2, 1) # => 2
+p exponent(2, 2) # => 4
+p exponent(3, 5) # => 243
+
 # Deep dup
 
 # The #dup method doesn't make a deep copy:

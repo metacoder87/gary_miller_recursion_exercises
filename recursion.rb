@@ -63,6 +63,26 @@ p recur_sum([18, 6, 42, 0]) # => 66
 # exp(b, 0) = 1
 # exp(b, n) = b * exp(b, n - 1)
 
+    def expo(base, power)
+        power > 1 ? base * expo(base, power - 1) : base == 2 && power == 0 ? 1 : base
+    end
+
+    # test
+puts "Exponent 1 \n"
+p expo(2, 3) # => 8
+p expo(3, 2) # => 9
+p expo(3, 3) # => 27
+p expo(9, 1) # => 9
+p expo(1, 0) # => 1
+p expo(0, 1) # => 0
+p expo(1, 1) # => 1
+p expo(1, 2) # => 1
+p expo(2, 0) # => 1
+p expo(2, 1) # => 2
+p expo(2, 2) # => 4
+p expo(3, 5) # => 243
+
+
 # # recursion 2
 # exp(b, 0) = 1
 # exp(b, 1) = b

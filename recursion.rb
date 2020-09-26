@@ -177,6 +177,16 @@ p exponent(3, 5) # => 243
 
 # You should be able to handle "mixed" arrays. For instance: [1, [2], [3, [4]]].
 
+    def deep_dup(array)
+        array.count > 1 ? deep_dup(array.drop(1)).unshift(array.first.dup) : array.dup
+    end
+
+    # test
+p deep_dup([1, [2], [3, [4]]])
+p deep_dup([[1, 2, 3], [4, 5, 6], [7], 8])
+p deep_dup([])
+p deep_dup([1])
+
 # Fibonacci
 
 # Write a recursive and an iterative Fibonacci method. The method should take in 

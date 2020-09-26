@@ -198,15 +198,15 @@ puts "Fibonacci"
 # this just passing a single argument for the number of Fibonacci numbers requested.
 
     def fibonacci(n, fib = [1, 1])
-        n > 2 ? fibonacci(n - 1, fib << fib[-1] + fib[-2]) : n == 2 ? fib : n == 1 ? [fib.first] : []
+        n > 2 ? fibonacci(n - 1, fib << fib[-1] + fib[-2]) : n == 2 ? fib : n == 1 ? [fib.first] : [].first
     end
 
 p fibonacci(5) # => [1, 1, 2, 3, 5]
 p fibonacci(18) # => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]
 p fibonacci(2) # => [1, 1]
 p fibonacci(1) # => [1]
-p fibonacci(0) # => []
-p fibonacci(-5) # => []
+p fibonacci(0) # => nil
+p fibonacci(-5) # => nil
 
 # Binary Search
 puts "Binary Search"
@@ -229,8 +229,8 @@ puts "Binary Search"
 # location of the found object (or nil if not found!). 
 # Hint: you will probably want to use subarrays.
 
-    def bsearch(array, target)
-        !array.include?(target) ? [] : target == array[array.count / 2] ? array[array.count / 2] : target < array[array.count / 2] ? bsearch(array.take(array.count / 2), target) : target > array[array.count / 2] ? bsearch(array.values_at(array.count / 2 + 1..-1), target) : []
+    def bsearch(array, target, brr = deep_dup(array))
+        !array.include?(target) ? [].first : target == array[array.count / 2] ? brr.index(array[array.count / 2]) : target < array[array.count / 2] ? bsearch(array.take(array.count / 2), target) : target > array[array.count / 2] ? bsearch(array.values_at(array.count / 2 + 1..-1), target) : []
     end
 
 # Make sure that these test cases are working:

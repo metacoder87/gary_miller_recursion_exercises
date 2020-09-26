@@ -24,7 +24,7 @@
     end
 
     # test
-puts "Range \n"
+puts "Range"
 p range(1, 4) # => [1, 2, 3] 
 p range(3, 10) # => [3, 4, 5, 6, 7, 8, 9]
 p range(9, 14) # => [9, 10, 11, 12, 13]
@@ -41,13 +41,13 @@ p range(10, 8) # => []
     end
 
     # test
-puts "Sum iteration \n"
+puts "Sum iteration"
 p iter_sum([0, 1, 2, 3, 4, 5]) # => 15
 p iter_sum([5, 10, -4]) # => 11
 p iter_sum([1, 2, 3, 126, -7]) # => 125
 p iter_sum([18, 6, 42, 0]) # => 66
 
-puts "Sum recursion \n"
+puts "Sum recursion"
 p recur_sum([0, 1, 2, 3, 4, 5]) # => 15
 p recur_sum([5, 10, -4]) # => 11
 p recur_sum([1, 2, 3, 126, -7]) # => 125
@@ -68,7 +68,7 @@ p recur_sum([18, 6, 42, 0]) # => 66
     end
 
     # test
-puts "Exponent 1 \n"
+puts "Exponent 1"
 p expo(2, 3) # => 8
 p expo(3, 2) # => 9
 p expo(3, 3) # => 27
@@ -128,7 +128,7 @@ p expo(3, 5) # => 243
     end
 
     # test
-puts "Exponent 2 \n"
+puts "Exponent 2"
 p exponent(2, 3) # => 8
 p exponent(3, 2) # => 9
 p exponent(3, 3) # => 27*
@@ -143,6 +143,7 @@ p exponent(2, 2) # => 4
 p exponent(3, 5) # => 243
 
 # Deep dup
+puts "Deep dup"
 
 # The #dup method doesn't make a deep copy:
 
@@ -188,6 +189,7 @@ p deep_dup([])
 p deep_dup([1])
 
 # Fibonacci
+puts "Fibonacci"
 
 # Write a recursive and an iterative Fibonacci method. The method should take in 
 # an integer n and return the first n Fibonacci numbers in an array.
@@ -196,16 +198,18 @@ p deep_dup([1])
 # this just passing a single argument for the number of Fibonacci numbers requested.
 
     def fibonacci(n, fib = [1, 1])
-        n > 2 ? fibonacci(n - 1, fib << fib[-1] + fib[-2]) : n == 2 ? fib : n
+        n > 2 ? fibonacci(n - 1, fib << fib[-1] + fib[-2]) : n == 2 ? fib : n == 1 ? [fib.first] : []
     end
 
 p fibonacci(5) # => [1, 1, 2, 3, 5]
 p fibonacci(18) # => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]
 p fibonacci(2) # => [1, 1]
-p fibonacci(1) # => 1
-p fibonacci(0) # => 0
+p fibonacci(1) # => [1]
+p fibonacci(0) # => []
+p fibonacci(-5) # => []
 
 # Binary Search
+puts "Binary Search"
 
 # The binary search algorithm begins by comparing the target value to the value 
 # of the middle element of the sorted array. If the target value is equal to the 
@@ -225,15 +229,18 @@ p fibonacci(0) # => 0
 # location of the found object (or nil if not found!). 
 # Hint: you will probably want to use subarrays.
 
+    def bsearch(array, target)
+        target == ?
+
 # Make sure that these test cases are working:
 
-# bsearch([1, 2, 3], 1) # => 0
-# bsearch([2, 3, 4, 5], 3) # => 1
-# bsearch([2, 4, 6, 8, 10], 6) # => 2
-# bsearch([1, 3, 4, 5, 9], 5) # => 3
-# bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-# bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-# bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+bsearch([1, 2, 3], 1) # => 0
+bsearch([2, 3, 4, 5], 3) # => 1
+bsearch([2, 4, 6, 8, 10], 6) # => 2
+bsearch([1, 3, 4, 5, 9], 5) # => 3
+bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 # Merge Sort
 

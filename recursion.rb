@@ -230,7 +230,22 @@ puts "Binary Search"
 # Hint: you will probably want to use subarrays.
 
     def bsearch(array, target, brr = deep_dup(array))
-        target == array[array.count / 2] ? brr.index(array[array.count / 2]) : target < array[0] ? [].first : target < array[array.count / 2] ? bsearch(array.take(array.count / 2), target) : target > array.last ? [].first : target > array[array.count / 2] ? bsearch(array.values_at(array.count / 2 + 1..-1), target)
+        #checks if target is the middle element
+        if target == array[array.count / 2] 
+            brr.index(array[array.count / 2]) # returns middle element
+        # checks if target is smaller than the smallest element
+        elsif target < array[0] 
+            [].first # returns nil
+        # checks if target is smaller than the middle element
+        elsif target < array[array.count / 2] 
+            bsearch(array.take(array.count / 2), target) # runs bsearch on the lesser than sub array
+        # checks if target is greater than the greatest element
+        elsif target > array.last 
+            [].first # returns nil
+        # checks if target is greater than the middle element
+        elsif target > array[array.count / 2] 
+            bsearch(array.values_at(array.count / 2 + 1..-1), target) # runs bsearch on the greater than sub array
+        end
     end
 
 # Make sure that these test cases are working:

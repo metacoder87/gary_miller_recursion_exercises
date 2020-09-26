@@ -195,6 +195,16 @@ p deep_dup([1])
 # You shouldn't have to pass any arrays between methods; you should be able to do 
 # this just passing a single argument for the number of Fibonacci numbers requested.
 
+    def fibonacci(n, fib = [1, 1])
+        n > 2 ? fibonacci(n - 1, fib << fib[-1] + fib[-2]) : n == 2 ? fib : n
+    end
+
+p fibonacci(5) # => [1, 1, 2, 3, 5]
+p fibonacci(18) # => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]
+p fibonacci(2) # => [1, 1]
+p fibonacci(1) # => 1
+p fibonacci(0) # => 0
+
 # Binary Search
 
 # The binary search algorithm begins by comparing the target value to the value 

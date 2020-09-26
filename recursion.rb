@@ -1,4 +1,7 @@
 
+
+require 'byebug'
+
 # Recursion
 
 # Learning Goals
@@ -230,6 +233,7 @@ puts "Binary Search"
 # Hint: you will probably want to use subarrays.
 
     def bsearch(array, target, brr = deep_dup(array))
+        debugger
         #checks if target is the middle element
         if target == array[array.count / 2] 
             brr.index(array[array.count / 2]) # returns middle element
@@ -250,13 +254,13 @@ puts "Binary Search"
 
 # Make sure that these test cases are working:
 
-p bsearch([1, 2, 3], 1) # => 0
-p bsearch([2, 3, 4, 5], 3) # => 1
-p bsearch([2, 4, 6, 8, 10], 6) # => 2
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
 p bsearch([1, 3, 4, 5, 9], 5) # => 3
 p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 # Merge Sort
 

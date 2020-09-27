@@ -232,8 +232,7 @@ puts "Binary Search"
 # location of the found object (or nil if not found!). 
 # Hint: you will probably want to use subarrays.
 
-    def bsearch(array, target, brr = deep_dup(array))
-        p brr
+    def bsearch(array, target)
         #checks if target is the middle element
         if target == array[array.count / 2] 
             brr.index(array[array.count / 2]) # returns middle element

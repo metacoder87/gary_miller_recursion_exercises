@@ -260,8 +260,12 @@ p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 # and check out this diagram.
 # https://assets.aaonline.io/fullstack/ruby/assets/merge-sort-diagram.png
 
+puts "Merge Sort"
+
     def merge_sort(array)
-        array.count > 1 ? merge_sort(array[0...array.count / 2]) + merge_sort(array[array.count / 2..-1]) : array
+        left = array[0...array.count / 2]
+        right = array[array.count / 2..-1]
+        array.count <= 1 ? array : left[0] < right[0] ? merge_sort(left) + merge_sort(right) : merge_sort(right) + merge_sort(left)
     end
 
 p merge_sort([]) # => []

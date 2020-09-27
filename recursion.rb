@@ -260,6 +260,17 @@ p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 # and check out this diagram.
 # https://assets.aaonline.io/fullstack/ruby/assets/merge-sort-diagram.png
 
+    def merge_sort(array)
+        array.count > 1 ? merge_sort(array[0...array.count / 2]) + merge_sort(array[array.count / 2..-1]) : array
+    end
+
+p merge_sort([]) # => []
+p merge_sort([20, 8]) # => [8, 20]
+p merge_sort([16, 14, 11]) # => [11, 14, 16]
+p merge_sort([18, 4, 7, 19, 17]) # => [4, 7, 17, 18, 19]
+p merge_sort([10, 12, 15, 13, 16, 7, 19, 2]) # => [2, 7, 10, 12, 13, 15, 16, 19]
+p merge_sort([3, 14, 10, 8, 11, 7, 18, 17, 2, 5, 9, 20, 19]) # => [2, 3, 5, 7, 8, 9, 10, 11, 14, 17, 18, 19, 20]
+
 # Array Subsets
 
 # Write a method subsets that will return all subsets of an array.

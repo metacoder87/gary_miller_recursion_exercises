@@ -233,7 +233,7 @@ puts "Binary Search"
 # Hint: you will probably want to use subarrays.
 
     def bsearch(array, target, brr = array)
-        debugger
+        # debugger
         # p "brr #{brr}" 
         #checks if target is the middle element
         if target == array[array.count / 2] 
@@ -243,25 +243,25 @@ puts "Binary Search"
             [].first # returns nil
         # checks if target is greater than the middle element
         elsif target > array[array.count / 2] 
-            bsearch(array.values_at(array.count / 2 + 1..-1), target, brr = array) # runs bsearch on the greater than sub array
+            bsearch(array.values_at(array.count / 2 + 1..-1), target, brr = brr) # runs bsearch on the greater than sub array
         # checks if target is smaller than the smallest element
         elsif target < array[0] 
             [].first # returns nil
         # checks if target is smaller than the middle element
         elsif target < array[array.count / 2] 
-            bsearch(array.take(array.count / 2), target) # runs bsearch on the lesser than sub array
+            bsearch(array.take(array.count / 2), target, brr = brr) # runs bsearch on the lesser than sub array
         end
     end
 
 # Make sure that these test cases are working:
 
-# p bsearch([1, 2, 3], 1) # => 0
-# p bsearch([2, 3, 4, 5], 3) # => 1
-# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
 p bsearch([1, 3, 4, 5, 9], 5) # => 3
-# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 # Merge Sort
 

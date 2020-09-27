@@ -265,7 +265,7 @@ puts "Merge Sort"
     def merge_sort(array)
         left = array[0...array.count / 2]
         right = array[array.count / 2..-1]
-        array.count <= 1 ? array : array.first > array[array.count / 2] ? merge_sort([array[array.count / 2]] + array[0...array.count / 2] + merge_sort(array[array.count / 2 + 1..-1])) : merge_sort(array[0...array.count / 2]) + merge_sort(array[array.count / 2..-1])
+        array.count <= 1 ? array : array.first > array[array.count / 2] ? merge_sort([right.first] + left) + merge_sort(right.drop(1)) : left.count > 1 && left[1] > right.first ? merge_sort([left.first] + [right.first] + left.drop(1)) + merge_sort(right.drop(1)) : merge_sort(left) + merge_sort(right)
     end
 
 p merge_sort([]) # => []

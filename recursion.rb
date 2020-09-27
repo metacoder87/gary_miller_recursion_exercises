@@ -263,10 +263,15 @@ p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 puts "Merge Sort"
 
     def merge_sort(array)
-        left = array[0...array.count / 2]
-        right = array[array.count / 2..-1]
-        array.count <= 1 ? array : array.first > array[array.count / 2] ? merge_sort([right.first] + left) + merge_sort(right.drop(1)) : left.count > 1 && left[1] > right.first ? merge_sort([left.first] + [right.first] + left.drop(1)) + merge_sort(right.drop(1)) : merge_sort(left) + merge_sort(right)
+        array.length <= 1 ? array : merge_helper(merge_sort(array[0...array.length / 2]), merge_sort(array[array.length / 2..-1]))
     end
+
+
+    def merge_helper(left, right, merged = [])
+        left.first <= right.first ? merged << left.shift : merged << right.shift until left.length < 1 || right.length < 1 
+        merged + left + right
+    end
+
 
 p merge_sort([]) # => []
 p merge_sort([20, 8]) # => [8, 20]

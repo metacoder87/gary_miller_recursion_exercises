@@ -294,7 +294,7 @@ puts "Array Subsets"
 # that is the same, except it also does contain 3.
 
         def subsets(array)
-            array.count == 0 ? subsets(array[0...-1]) + array.each { |num| num += array.last } : array
+            array.count > 0 ? subsets(array[0...-1]) + subsets(array[0...-1]).map { |num| num += [array.last] } : [array]
         end
 
 p subsets([]) # => [[]]

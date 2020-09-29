@@ -281,14 +281,9 @@ p merge_sort([10, 12, 15, 13, 16, 7, 19, 2]) # => [2, 7, 10, 12, 13, 15, 16, 19]
 p merge_sort([3, 14, 10, 8, 11, 7, 18, 17, 2, 5, 9, 20, 19]) # => [2, 3, 5, 7, 8, 9, 10, 11, 14, 17, 18, 19, 20]
 
 # Array Subsets
+puts "Array Subsets"
 
 # Write a method subsets that will return all subsets of an array.
-
-# subsets([]) # => [[]]
-# subsets([1]) # => [[], [1]]
-# subsets([1, 2]) # => [[], [1], [2], [1, 2]]
-# subsets([1, 2, 3])
-# # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
 # You can implement this as an Array method if you prefer.
 
@@ -297,6 +292,15 @@ p merge_sort([3, 14, 10, 8, 11, 7, 18, 17, 2, 5, 9, 20, 19]) # => [2, 3, 5, 7, 8
 # Those that do not contain 3 (all of these are subsets of [1, 2]).
 # For every subset that does not contain 3, there is also a corresponding subset 
 # that is the same, except it also does contain 3.
+
+        def subsets(array)
+            array.count == 0 ? subsets(array[0...-1]) + array.each { |num| num += array.last } : array
+        end
+
+p subsets([]) # => [[]]
+p subsets([1]) # => [[], [1]]
+p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+p subsets([1, 2, 3]) # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
 # Permutations
 

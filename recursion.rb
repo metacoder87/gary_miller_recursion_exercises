@@ -303,6 +303,7 @@ p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
 p subsets([1, 2, 3]) # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
 # Permutations
+puts "Permutations"
 
 # https://en.wikipedia.org/wiki/Permutation
 # Write a recursive method permutations(array) that calculates all the 
@@ -319,6 +320,26 @@ p subsets([1, 2, 3]) # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 # [1, 2, 3].permutation.to_a  # => [[1, 2, 3], [1, 3, 2],
 #                             #     [2, 1, 3], [2, 3, 1],
 #                             #     [3, 1, 2], [3, 2, 1]]
+
+
+        # Heap's Algorithm (an attempt anyway)
+        def permutations(array, count = array.count)
+            return array if count == 1 
+            permutations(array, count - 1)
+            array.each_with_index do |num, i|
+                until i == count 
+                    if count % 2 == 0
+                        array[i], array[count - 1] = array[count - 1], array[i]
+                    else array[0], array[count - 1] = array[count - 1], array[0]
+                    end
+                    permutations(array, count - 1)
+                end
+            end
+        end
+
+    # tests
+p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+
 
 # Make Change
 

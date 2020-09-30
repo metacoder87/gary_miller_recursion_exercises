@@ -323,7 +323,7 @@ puts "Permutations"
 
 
         def permutations(array, el = array[0])
-            array.count < 2 ? [array] : permutations(array[1..-1]).each { |perm| (0..perm.size).each { |i| result = [] << perm.insert(i,el) } }
+            array.count < 2 ? [array] : permutations(array[1..-1]).each_with_object([]) { |perm, result| (0..perm.size).each { |i| result << perm.insert(i,el) } }
         end
 
     # tests

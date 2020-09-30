@@ -321,20 +321,15 @@ puts "Permutations"
 #                             #     [2, 1, 3], [2, 3, 1],
 #                             #     [3, 1, 2], [3, 2, 1]]
 
+        def factorial(n)
+            n > 0 ? n + factorial(n -1) : n
+        end
 
-        # Heap's Algorithm (an attempt anyway)
-        def permutations(array, count = array.count)
-            return array if count == 1 
-            permutations(array, count - 1)
-            array.each_with_index do |num, i|
-                until i == count 
-                    if count % 2 == 0
-                        array[i], array[count - 1] = array[count - 1], array[i]
-                    else array[0], array[count - 1] = array[count - 1], array[0]
-                    end
-                    permutations(array, count - 1)
-                end
-            end
+        def permutations(array, perms = [])
+            return array if perms.count == factorial(array.count)
+            array[0], array[1] = array[1], array[0]
+            perms << array[0] + permutations(array[1..-1].rotate)
+            perms
         end
 
     # tests

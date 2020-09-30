@@ -321,19 +321,21 @@ puts "Permutations"
 #                             #     [2, 1, 3], [2, 3, 1],
 #                             #     [3, 1, 2], [3, 2, 1]]
 
-        def factorial(n)
-            n > 0 ? n + factorial(n -1) : n
-        end
 
-        def permutations(array, perms = [])
-            return array if perms.count == factorial(array.count)
-            array[0], array[1] = array[1], array[0]
-            perms << array[0] + permutations(array[1..-1].rotate)
-            perms
+        def permutations(array, el = array[0])
+            array.count < 2 ? [array] : permutations(array[1..-1]).each { |perm| (0..perm.size).each { |i| result = [] << perm.insert(i,el) } }
         end
 
     # tests
+p permutations([]) # => ([[]])
+p permutations([1]) # => ([[], [1]])
+p permutations([1,2]) # => ([[1,2], [2,1]])
 p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+p permutations([1,2,3,4]) # => [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1], [1, 3, 2, 4], 
+                          #    [3, 1, 2, 4], [3, 2, 1, 4], [3, 2, 4, 1], [1, 3, 4, 2], [3, 1, 4, 2], 
+                          #    [3, 4, 1, 2], [3, 4, 2, 1], [1, 2, 4, 3], [2, 1, 4, 3], [2, 4, 1, 3], 
+                          #    [2, 4, 3, 1], [1, 4, 2, 3], [4, 1, 2, 3], [4, 2, 1, 3], [4, 2, 3, 1], 
+                          #    [1, 4, 3, 2], [4, 1, 3, 2], [4, 3, 1, 2], [4, 3, 2, 1]]
 
 
 # Make Change

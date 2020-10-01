@@ -386,11 +386,9 @@ puts "Make Change"
 # video walkthrough of the problem.
 
 # Make sure you and your partner understand each line before moving on.
-
-        def make_change(amount, coins)
-            change = []
-            coins.each { |coin| amount / coin >= 1 ? change << coin && amount -= coin : next }
-            change
+        #greedy
+        def make_change(amount, coins, change = [])
+            coins.each { |coin| amount / coin >= 1 ? (amount / coin).times { change << coin } && amount -= coin * (amount / coin) : next } && change
         end
 
     # tests

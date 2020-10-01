@@ -339,6 +339,7 @@ p permutations([1,2,3,4]) # => [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3,
 
 
 # Make Change
+puts "Make Change"
 
 # RubyQuiz: Make change.
 # https://web.archive.org/web/20130215052843/http://rubyquiz.com/quiz154.html 
@@ -385,6 +386,19 @@ p permutations([1,2,3,4]) # => [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3,
 # video walkthrough of the problem.
 
 # Make sure you and your partner understand each line before moving on.
+
+        def make_change(amount, coins)
+            change = []
+            coins.each { |coin| amount / coin >= 1 ? change << coin && amount -= coin : next }
+            change
+        end
+
+    # tests
+# p make_change(14, [10,7,1]) # => [7, 7]
+# p make_change(24, [10,7,1]) # => [10, 7, 7]
+# p make_change(39, [10,7,1]) # => [10, 10, 10, 7, 1, 1]
+p make_change(39, [25,10,5,1]) # => [25, 10, 1, 1, 1, 1]
+p make_change(96, [25,10,5,1]) # => [25, 25, 25, 10, 10, 1]
 
 # Resources
 # Wikipedia: Recursion

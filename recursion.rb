@@ -387,16 +387,22 @@ puts "Make Change"
 
 # Make sure you and your partner understand each line before moving on.
         #greedy
-        def make_change(amount, coins, change = [])
+        def greedy_make_change(amount, coins, change = [])
             coins.each { |coin| amount / coin >= 1 ? (amount / coin).times { change << coin } && amount -= coin * (amount / coin) : next } && change
         end
 
     # tests
-# p make_change(14, [10,7,1]) # => [7, 7]
-# p make_change(24, [10,7,1]) # => [10, 7, 7]
-# p make_change(39, [10,7,1]) # => [10, 10, 10, 7, 1, 1]
-p make_change(39, [25,10,5,1]) # => [25, 10, 1, 1, 1, 1]
-p make_change(96, [25,10,5,1]) # => [25, 25, 25, 10, 10, 1]
+p greedy_make_change(39, [25,10,5,1]) # => [25, 10, 1, 1, 1, 1]
+p greedy_make_change(96, [25,10,5,1]) # => [25, 25, 25, 10, 10, 1]
+
+        def make_change(amount, coins, change = [])
+            coins.each { |coin| amount / coin >= 1 ? make_change(amount - coin, coins, change = change << coin) : next } && change
+        end
+
+    # tests
+p make_change(14, [10,7,1]) # => [7, 7]
+p make_change(24, [10,7,1]) # => [10, 7, 7]
+p make_change(39, [10,7,1]) # => [10, 10, 10, 7, 1, 1]
 
 # Resources
 # Wikipedia: Recursion

@@ -1,7 +1,4 @@
 
-
-require 'byebug'
-
 # Recursion
 
 # Learning Goals
@@ -140,7 +137,7 @@ p exponent(1, 0) # => 1
 p exponent(0, 1) # => 0
 p exponent(1, 1) # => 1
 p exponent(1, 2) # => 1
-p exponent(2, 0) # => 1*
+p exponent(2, 0) # => 1
 p exponent(2, 1) # => 2
 p exponent(2, 2) # => 4
 p exponent(3, 5) # => 243
@@ -186,10 +183,22 @@ puts "Deep dup"
     end
 
     # test
-p deep_dup([1, [2], [3, [4]]])
-p deep_dup([[1, 2, 3], [4, 5, 6], [7], 8])
-p deep_dup([])
-p deep_dup([1])
+  arr = [1, [2], [3, [4]]]
+  brr = deep_dup(arr)
+    brr[1] << "Flawless"
+p arr # => [1, [2], [3, [4]]]
+  crr = [[1, 2, 3], [4, 5, 6], [7], 8]
+  drr = deep_dup(crr)
+    drr[0] << "Whoops"
+p crr # => [[1, 2, 3], [4, 5, 6], [7], 8]
+  err = []
+  frr = deep_dup(err)
+  frr << "ERROR"
+p err # => []
+  grr = [1]
+  hrr = deep_dup(grr)
+  hrr.shift
+p grr # => [1]
 
 # Fibonacci
 puts "Fibonacci"
@@ -328,7 +337,7 @@ puts "Permutations"
 
     # tests
 p permutations([]) # => ([[]])
-p permutations([1]) # => ([[], [1]])
+p permutations([1]) # => ([[1]])
 p permutations([1,2]) # => ([[1,2], [2,1]])
 p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 p permutations([1,2,3,4]) # => [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1], [1, 3, 2, 4], 

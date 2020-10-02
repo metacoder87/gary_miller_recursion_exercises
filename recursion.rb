@@ -339,7 +339,7 @@ p permutations([1,2,3,4]) # => [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3,
 
 
 # Make Change
-puts "Make Change"
+
 
 # RubyQuiz: Make change.
 # https://web.archive.org/web/20130215052843/http://rubyquiz.com/quiz154.html 
@@ -386,17 +386,23 @@ puts "Make Change"
 # video walkthrough of the problem.
 
 # Make sure you and your partner understand each line before moving on.
-        #greedy
+puts "Greedy Change"
+
         def greedy_make_change(amount, coins, change = [])
-            coins.each { |coin| amount / coin >= 1 ? (amount / coin).times { change << coin } && amount -= coin * (amount / coin) : next } && change
+            return change if amount < 1 || coins.empty?
+            change << coins.first && amount -= coins.first until amount / coins.first < 1
+            greedy_make_change(amount, coins.drop(1), change)
         end
 
     # tests
 p greedy_make_change(39, [25,10,5,1]) # => [25, 10, 1, 1, 1, 1]
 p greedy_make_change(96, [25,10,5,1]) # => [25, 25, 25, 10, 10, 1]
 
+
+puts "Make Change"
+
         def make_change(amount, coins, change = [])
-            coins.each { |coin| amount / coin >= 1 ? make_change(amount - coin, coins, change = change << coin) : next } && change
+            coins.each { |coin| amount / coin >= 1 ? make_change(amount - coin, coins.drop(1), change = change << coin) : next } && change
         end
 
     # tests

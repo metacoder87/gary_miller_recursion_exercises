@@ -386,11 +386,11 @@ p permutations([1,2,3,4]) # => [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3,
 # video walkthrough of the problem.
 
 # Make sure you and your partner understand each line before moving on.
-puts "Greedy Change"
+puts "Make Greedy Change"
 
         def greedy_make_change(amount, coins, change = [])
             return change if amount < 1 || coins.empty?
-            change << coins.first && amount -= coins.first until amount / coins.first < 1
+            change << coins.first && amount -= coins.first until amount < coins.first
             greedy_make_change(amount, coins.drop(1), change)
         end
 
@@ -399,13 +399,12 @@ p greedy_make_change(39, [25,10,5,1]) # => [25, 10, 1, 1, 1, 1]
 p greedy_make_change(96, [25,10,5,1]) # => [25, 25, 25, 10, 10, 1]
 
 
-puts "Make Change"
+puts "Make Less Change"
 
         def make_change(amount, coins, change = [])
             return change if amount < 1 || coins.empty?
-            coin = coins.select { |coin| amount % coin == 0 }.first 
-            change << coin && amount -= coin until amount / coin < 1
-            greedy_make_change(amount, coins - [coin], change)
+            coin = coins.select { |coin| amount % coin == 0 && coin != 1 }.first || coin = coins.select { |coin| amount / coin > 0 }.first 
+            amount > coin ? make_change(amount - coin, coins, change << coin) : make_change(amount - coin, coins - [coin], change << coin)
         end
 
     # tests

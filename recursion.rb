@@ -1,3 +1,7 @@
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/gary_miller_recursion_exercises/blob/master/recursion.rb
+
 
 # Recursion
 
@@ -424,3 +428,9 @@ p make_change(39, [10,7,1]) # => [10, 10, 10, 7, 1, 1]
 # Resources
 # Wikipedia: Recursion
 # https://en.wikipedia.org/wiki/Recursion_(computer_science)
+
+ 
+
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/gary_miller_recursion_exercises/blob/master/recursion.rb

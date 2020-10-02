@@ -402,7 +402,10 @@ p greedy_make_change(96, [25,10,5,1]) # => [25, 25, 25, 10, 10, 1]
 puts "Make Change"
 
         def make_change(amount, coins, change = [])
-            coins.each { |coin| amount / coin >= 1 ? make_change(amount - coin, coins.drop(1), change = change << coin) : next } && change
+            return change if amount < 1 || coins.empty?
+            coin = coins.select { |coin| amount % coin == 0 }.first 
+            change << coin && amount -= coin until amount / coin < 1
+            greedy_make_change(amount, coins - [coin], change)
         end
 
     # tests
